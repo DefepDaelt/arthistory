@@ -1,0 +1,354 @@
+/*___________________________________________________________*/
+/*__ RESET __________________________________________________*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+/*___________________________________________________________*/
+
+/*___________________________________________________________*/
+/*__ VARIABLES ______________________________________________*/
+:root {
+  --hue: 240;
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-secund: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+}
+/*___________________________________________________________*/
+
+/*___________________________________________________________*/
+/*__ BASE ___________________________________________________*/
+body {
+  width: 100vw;
+  font: 400 1rem 'DM Sans', sans-serif;
+  color: var(--text-color);
+  background-color: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.title {
+  font: 700 2rem 'Poppins', sans-serif;
+  color: var(--title-color);
+}
+
+.subtitle {
+  font: 700 1.5rem 'Poppins', sans-serif;
+  color: var(--title-color);
+}
+
+.button {
+  background-color: var(--base-color);
+  color: var(--text-color-light);
+  display: inline-flex;
+  height: 3.5rem;
+  align-items: center;
+  padding: 0 2rem;
+  border-radius: 0.25rem;
+  font: 500 1rem 'DM Sans', sans-serif;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background-color: var(--base-color-alt);
+}
+
+.container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.divider[variant='1'] {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
+}
+
+.divider[variant='2'] {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34) 0%,
+    hsla(var(--hue), 36%, 57%, 1) 100%
+  );
+}
+
+/* HEADER */
+#header {
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem;
+  display: flex;
+
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  background-color: var(--body-color);
+}
+
+#header.scroll {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* NAV */
+nav {
+  width: 100%;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul li a {
+  transition: color 0.2s;
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: var(--base-color);
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: var(--base-color);
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav .menu .container {
+  display: none;
+}
+
+nav .menu {
+  opacity: 0;
+  visibility: hidden;
+
+  text-align: center;
+
+  top: -20rem;
+
+  transition: all 0.2s;
+}
+
+nav.show .menu {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--body-color);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  opacity: 1;
+  visibility: visible;
+
+  display: grid;
+  gap: 4rem;
+  place-content: center;
+}
+
+nav.show .menu .container {
+  display: grid;
+}
+
+.toggle {
+  color: var(--base-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+nav .icon-close {
+  visibility: hidden;
+  opacity: 0;
+
+  position: absolute;
+  top: -1.5rem;
+  right: 1.5rem;
+
+  transition: 0.2s;
+}
+
+nav.show .icon-close {
+  visibility: visible;
+  opacity: 1;
+
+  top: 1.5rem;
+}
+
+/* LOGO */
+.logo {
+  font: 700 1.31rem 'Poppins', sans-serif;
+  color: var(--title-color);
+}
+.logo span {
+  color: var(--base-color);
+}
+
+.logo-alt span {
+  color: var(--body-color);
+}
+
+main {
+  margin-top: 4.5rem;
+}
+
+.back-to-top {
+  background-color: var(--base-color);
+  color: var(--text-color-light);
+
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+
+  padding: 0.8rem;
+  clip-path: circle();
+
+  font-size: 1.5rem;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: 0.3s;
+  transform: translateY(100%);
+}
+
+.back-to-top.show {
+  visibility: visible;
+  opacity: 1;
+
+  transform: translateY(0);
+}
+/*___________________________________________________________*/
+
+/*___________________________________________________________*/
+/*__ HOME ___________________________________________________*/
+#home {
+  width: 100%;
+  height: 92vh;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+
+  align-items: center;
+  left: 0;
+  bottom: 3.125rem;
+}
+
+#home .container {
+  margin: 0;
+}
+
+#home .text {
+  position: relative;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  text-align: center;
+}
+
+#home .text::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background-color: var(--base-color-secund);
+  position: absolute;
+  top: -16.8%;
+  left: 16.7%;
+  z-index: -1;
+  border-radius: 5px;
+}
+
+#home .text h2 {
+  margin-bottom: 1rem;
+}
+
+#home .text p {
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+/*___________________________________________________________*/
+
+/*___________________________________________________________*/
+/*__ Prehistory _____________________________________________*/
+#prehistory {
+  min-height: 92vh;
+  overflow: hidden;
+}
+/*___________________________________________________________*/
+
+/*___________________________________________________________*/
+/*__ Mesopotamia ____________________________________________*/
+#mesopotamia {
+  min-height: 92vh;
+  overflow: hidden;
+}
+/*___________________________________________________________*/
+
+/*___________________________________________________________*/
+/*__ Footer _________________________________________________*/
+footer {
+  background-color: var(--base-color);
+}
+
+footer .logo {
+  display: inline-flex;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand p {
+  color: var(--text-color-light);
+  margin-bottom: 0.75rem;
+}
+/*___________________________________________________________*/
+
+/*___________________________________________________________*/
+/*__ MEDIA QUERIES __________________________________________*/
+@media (min-width: 1200px) {
+  #home .text::before {
+    content: '';
+    height: 100%;
+    width: 68%;
+    background-color: var(--base-color-secund);
+    position: absolute;
+    top: -16.8%;
+    left: 16.7%;
+    z-index: -1;
+    border-radius: 5px;
+  }
+}
+/*___________________________________________________________*/
