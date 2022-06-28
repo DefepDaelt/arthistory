@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   #home .text,
   #prehistory .container,
   #mesopotamia .container,
+  #egyptian .container,
+  #greek .container,
+  #romana .container,
+  #comeSoon .container,
   footer .brand
 `,
     { interval: 100 }
